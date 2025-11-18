@@ -1,5 +1,3 @@
-
-<?php  phpinfo(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,19 +6,16 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome to PHP</h1>
+
     <?php 
-    
-    print "<h1>Hellow World!</h1>";
+    echo "<pre>";
+    print_r($_SERVER); 
+
+    echo $_SERVER['REQUEST_METHOD'];
+    echo "<br>";
+     echo $_SERVER['HTTP_HOST'];
     
     ?>
-   
-php_check_syntax
-
-   
+    
 </body>
 </html>
-
-<?php ?>
-
-
