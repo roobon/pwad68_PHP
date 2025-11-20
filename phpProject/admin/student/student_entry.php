@@ -28,7 +28,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Validation</h1>
+            <h1>Student Entry</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -47,32 +47,47 @@
           <!-- left column -->
           <div class="col-md-12">
             <!-- jquery validation -->
+             <?php 
+                  if(isset($_POST['submit'])){
+                    extract($_POST);
+                    $sql = "INSERT INTO students VALUES(NULL, '$fname', '$lname', '$dob', '$notes')";
+                    $db->query($sql);
+
+                    if($db->affected_rows){
+                      echo '<div class="alert alert-success"> Successfully Inserted </div>';
+                    }
+                  }  
+                ?>
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Quick Example <small>jQuery Validation</small></h3>
+                <h3 class="card-title">Add new Student</h3>
+                
+
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form id="quickForm">
+              <form id="quickForm" action="" method="post">
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                    <label for="exampleInputEmail1">First Name</label>
+                    <input type="text" name="fname" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    <label for="exampleInputEmail1">Last Name</label>
+                    <input type="text" name="lname" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                   </div>
-                  <div class="form-group mb-0">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" name="terms" class="custom-control-input" id="exampleCheck1">
-                      <label class="custom-control-label" for="exampleCheck1">I agree to the <a href="#">terms of service</a>.</label>
-                    </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Birthdate</label>
+                    <input type="date" name="dob" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Notes</label>
+                    <textarea name="notes" class="form-control" rows="5"></textarea>
                   </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                 </div>
               </form>
             </div>
@@ -118,7 +133,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
 <!-- Page specific script -->
-<script>
+<!-- <script>
 $(function () {
   $.validator.setDefaults({
     submitHandler: function () {
@@ -163,6 +178,6 @@ $(function () {
     }
   });
 });
-</script>
+</script> -->
 </body>
 </html>
