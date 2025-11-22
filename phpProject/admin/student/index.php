@@ -1,4 +1,8 @@
-<?php include_once("../includes/db_config.php"); ?>
+<?php 
+include_once("../includes/db_config.php"); 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +56,13 @@
           <div class="col-12">
             
             <!-- /.card -->
-
+            <?php 
+              if(isset($_SESSION['msg'])){
+                echo '<div class="alert alert-success">' . $_SESSION['msg'] . '</div>';
+                unset($_SESSION['msg']);
+              }
+            
+            ?>
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">DataTable with default features</h3>
@@ -80,7 +90,12 @@
                     <td><?php echo $row->first_name ?></td>
                     <td><?php echo $row->last_name ?></td>
                     <td><?php echo $row->birthdate?></td>
-                    <td></td>
+                    <td class="text-center">
+                      <a href="student_edit.php?stid=<?php echo $row->employeeID;?>"><i class="fas fa-edit"></i></a>
+                      &nbsp;
+                      <a onclick="return confirm('Are you sure to Delete?')" href="student_delete.php?stid=<?php echo $row->employeeID;?>"><i class="fas fa-trash"></i></a>
+
+                    </td>
                   </tr>
                   <?php endwhile; ?>
                   </tbody>
@@ -138,7 +153,7 @@
 <!-- AdminLTE App -->
 <script src="<?php echo $admin_url ?>dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="<?php echo $admin_url ?>dist/js/demo.js"></script>
+<!-- <script src="dist/js/demo.js"></script> -->
 <!-- Page specific script -->
 <script>
   $(function () {

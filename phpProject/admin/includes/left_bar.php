@@ -42,13 +42,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/forms/general.html" class="nav-link">
+                <a href="<?php echo $admin_url ?>student/index.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>All Students</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="student/student_entry.php" class="nav-link">
+                <a href="<?php echo $admin_url ?>student/student_entry.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>New Student</p>
                 </a>

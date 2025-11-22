@@ -1,3 +1,4 @@
+<?php include_once ("db_config.php") ?>
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
